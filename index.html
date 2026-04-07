@@ -6,7 +6,7 @@
     <title>GlowEngine合同会社 | CREATOR AGENCY</title>
     <style>
         /* =========================================
-           基本設定・カラーパレット
+            基本設定・カラーパレット
            ========================================= */
         :root { 
             --bg-color: #05070d; 
@@ -14,6 +14,11 @@
             --gradient: linear-gradient(135deg, #00e5ff 0%, #0072ff 100%);
             --accent: #00e5ff; 
             --card-bg: #0e111a; 
+        }
+
+        /* スムーズスクロール有効化 */
+        html {
+            scroll-behavior: smooth;
         }
 
         body { 
@@ -32,11 +37,10 @@
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         img { max-width: 100%; height: auto; display: block; }
         
-        /* 変な改行を防ぐ便利クラス */
         .nowrap { white-space: nowrap; }
 
         /* =========================================
-           レイアウト共通設定
+            レイアウト共通設定
            ========================================= */
         .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; }
         .section { padding: 120px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
@@ -58,9 +62,18 @@
         }
 
         /* =========================================
-           ヘッダー
+            ヘッダー（ナビゲーション追加）
            ========================================= */
-        header { padding: 30px 0; position: absolute; width: 100%; top: 0; z-index: 100; }
+        header { 
+            padding: 20px 0; 
+            position: fixed; /* スクロール追従 */
+            width: 100%; 
+            top: 0; 
+            z-index: 100; 
+            background: rgba(5, 7, 13, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
         .header-inner { display: flex; justify-content: space-between; align-items: center; }
         
         .logo { 
@@ -73,14 +86,33 @@
         }
         
         .header-logo-img {
-            width: 70px; 
+            width: 50px; 
             height: auto;
         }
 
+        /* ナビゲーションメニュー */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #888;
+            text-transform: uppercase;
+        }
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
         /* =========================================
-           HEROセクション
+            HEROセクション
            ========================================= */
-        .hero { height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative;}
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative;}
         .hero .container { width: 100%; } 
         
         .hero-title { 
@@ -105,7 +137,7 @@
         }
 
         /* =========================================
-           VISION（企業理念）
+            VISION（企業理念）
            ========================================= */
         .vision-container { display: flex; flex-direction: column; }
         .vision-catch {
@@ -127,7 +159,7 @@
         }
 
         /* =========================================
-           BUSINESS（事業内容）
+            BUSINESS（事業内容）
            ========================================= */
         .production-card {
             background: var(--card-bg);
@@ -167,7 +199,7 @@
 
         .production-image-container {
             flex: 1; 
-            min-width: 250px; 
+            min-width: 200px; 
             height: 200px; 
             display: flex; 
             align-items: center; 
@@ -176,33 +208,37 @@
             z-index: 1;
         }
 
+        /* 事務所アイコン（icon_nocta.png）の設定 */
         .production-logo-img {
-            max-width: 300px; 
+            max-width: 220px; 
             height: auto;
             position: relative;
             z-index: 2;
+            /* 少し光らせるエフェクト */
+            filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.3));
         }
 
         /* =========================================
-           COMPANY（会社概要）
+            COMPANY（会社概要）
            ========================================= */
         .company-table { width: 100%; border-collapse: collapse; }
         .company-table th, .company-table td { padding: 25px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: left;}
         .company-table th { width: 30%; color: #888; font-weight: normal; }
 
         /* =========================================
-           フッター
+            フッター
            ========================================= */
         footer { padding: 60px 0; text-align: center; font-size: 0.8rem; color: #555; letter-spacing: 0.1em; }
 
         /* =========================================
-           スマホ用レスポンシブ（★余白を大幅に圧縮しました★）
+            レスポンシブ
            ========================================= */
         @media (max-width: 768px) {
-            /* ★ トップ画面と各セクションの無駄な余白を削る */
-            .hero { height: 65vh; } /* 90vhから65vhに短縮して間延びを防ぐ */
-            .section { padding: 60px 0; } /* 120pxあった上下の余白を半分の60pxに */
-            .section-title { margin-bottom: 40px; } /* タイトルと本文の隙間も縮小 */
+            header { padding: 15px 0; }
+            nav { display: none; } /* スマホではナビを非表示にする（一般的） */
+            .hero { height: 70vh; }
+            .section { padding: 60px 0; }
+            .section-title { margin-bottom: 40px; }
 
             .hero-subtitle { 
                 font-size: clamp(0.9rem, 3.5vw, 1.2rem); 
@@ -213,30 +249,22 @@
                 padding-left: 15px; 
                 letter-spacing: 0.02em; 
             }
-            .vision-text {
-                font-size: 0.9rem;
-                line-height: 1.8;
-            }
 
             .production-card { 
                 padding: 25px 20px; 
                 gap: 10px; 
-                display: flex;
                 flex-direction: column; 
             }
             .production-image-container { 
                 order: -1; 
-                height: 100px; 
+                height: 120px; 
                 min-width: 100%; 
             }
-            .production-logo-img { max-width: 160px; } 
-            
-            .production-desc { margin-bottom: 0; line-height: 1.8; }
+            .production-logo-img { max-width: 140px; } 
             
             .company-table th, .company-table td { display: block; width: 100%; padding: 10px 0;}
             .company-table th { border: none; padding-bottom: 0; }
             .production-name { white-space: normal; } 
-            
             .pc-br { display: none; }
         }
     </style>
@@ -249,6 +277,14 @@
                 <img src="./company_logo.png" alt="GlowEngine Logo" class="header-logo-img">
                 <span>GlowEngine</span>
             </a>
+            <nav>
+                <ul>
+                    <li><a href="#">Top</a></li>
+                    <li><a href="#vision">Vision</a></li>
+                    <li><a href="#business">Business</a></li>
+                    <li><a href="#company">Company</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -259,7 +295,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section id="vision" class="section">
         <div class="container vision-container">
             <h2 class="section-title">Vision<span>企業理念</span></h2>
             
@@ -279,7 +315,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section id="business" class="section">
         <div class="container">
             <h2 class="section-title">Business<span>事業内容</span></h2>
             
@@ -301,13 +337,13 @@
                 </div>
                 
                 <div class="production-image-container">
-                    <img src="./company_logo.png" alt="Creator Agency Image" class="production-logo-img">
+                    <img src="./icon_nocta.png" alt="Nocta Icon" class="production-logo-img">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section">
+    <section id="company" class="section">
         <div class="container">
             <h2 class="section-title">Company<span>会社概要</span></h2>
             <table class="company-table">
