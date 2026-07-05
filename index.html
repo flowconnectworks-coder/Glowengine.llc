@@ -6,312 +6,454 @@
 <title>GlowEngine合同会社 | CREATOR AGENCY</title>
 
 <style>
-:root { 
-    --bg-color: #05070d; 
-    --text-color: #f5f5f5; 
-    --gradient: linear-gradient(135deg, #00e5ff 0%, #0072ff 100%);
-    --accent: #00e5ff; 
-    --card-bg: #0e111a; 
+:root {
+    --bg: #08090b;
+    --text: #f7f2ea;
+    --muted: #9a9ca3;
+    --soft: rgba(247, 242, 234, 0.74);
+    --line: rgba(247, 242, 234, 0.1);
+    --accent: #50e6d2;
+    --accent-2: #f3b35c;
+    --gradient: linear-gradient(135deg, #50e6d2 0%, #8bb8ff 50%, #f3b35c 100%);
+    --card: rgba(18, 20, 24, 0.74);
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-body { 
-    font-family: "Helvetica Neue", Arial, "Hiragino Sans", sans-serif; 
-    margin: 0; 
-    background-color: var(--bg-color); 
-    background-image: 
-        radial-gradient(circle at 80% -20%, rgba(0, 229, 255, 0.15), transparent 50%),
-        radial-gradient(circle at -20% 80%, rgba(0, 114, 255, 0.15), transparent 50%);
-    background-attachment: fixed; 
-    color: var(--text-color); 
-    line-height: 1.8; 
-    -webkit-font-smoothing: antialiased; 
+body {
+    margin: 0;
+    color: var(--text);
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans", sans-serif;
+    line-height: 1.8;
+    background:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(155deg, #08090b 0%, #11151a 52%, #090a0c 100%);
+    background-size: 56px 56px, 56px 56px, auto;
+    -webkit-font-smoothing: antialiased;
 }
 
-a { text-decoration: none; color: inherit; transition: 0.3s; }
-img { max-width: 100%; height: auto; display: block; }
-
-.nowrap { white-space: nowrap; }
-
-.container { max-width: 1000px; margin: 0 auto; padding: 0 5%; }
-.section { padding: 120px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-
-.section-title { 
-    font-size: 2.5rem; 
-    font-weight: 800; 
-    letter-spacing: 0.1em; 
-    margin-bottom: 60px; 
-    text-transform: uppercase; 
-}
-
-.section-title span { 
-    display: block; 
-    font-size: 0.9rem; 
-    color: #666; 
-    font-weight: 400; 
-    margin-top: 5px; 
-    letter-spacing: 0.05em; 
-}
-
-header { 
-    padding: 20px 0; 
+body::before {
+    content: "";
     position: fixed;
-    width: 100%; 
-    top: 0; 
-    z-index: 100; 
-    background: rgba(5, 7, 13, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(120deg, rgba(80,230,210,0.08), transparent 34%),
+        linear-gradient(300deg, rgba(243,179,92,0.08), transparent 34%);
+    mix-blend-mode: screen;
 }
 
-.header-inner { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-.logo { 
-    font-size: 1.2rem; 
-    font-weight: bold; 
-    letter-spacing: 0.1em;
-    display: flex;       
-    align-items: center; 
-    gap: 15px; 
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: min(88%, 1120px);
+    margin: 0 auto;
+}
+
+.section {
+    padding: 120px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.section-title {
+    position: relative;
+    width: fit-content;
+    margin: 0 0 52px;
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+    width: 72px;
+    height: 2px;
+    background: var(--gradient);
+}
+
+.section-title span {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    padding: 16px 0;
+    background: rgba(8,9,11,0.78);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(12px);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
 }
 
 .header-logo-img {
-    width: 50px; 
-    height: auto;
+    width: 76px;
+    height: 50px;
+    object-fit: contain;
 }
 
 nav ul {
     display: flex;
-    list-style: none;
-    gap: 30px;
-    margin: 0;
+    gap: 8px;
     padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
-nav ul li a {
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: #888;
+nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: 999px;
+    color: var(--soft);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
-nav ul li a:hover {
-    color: var(--accent);
+nav a:hover {
+    color: var(--text);
+    background: rgba(247,242,234,0.08);
 }
 
-.hero { 
-    height: 100vh; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    text-align: center; 
-    position: relative;
+.hero {
+    min-height: 720px;
+    height: 94vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.hero .container { width: 100%; } 
+.hero .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-.hero-title { 
-    font-size: clamp(4rem, 10vw, 8rem); 
-    font-weight: 900; 
-    line-height: 1.05; 
-    letter-spacing: 0.02em; 
+.hero-title {
+    max-width: 900px;
     margin: 0;
+    font-size: clamp(4.6rem, 11vw, 9.8rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: 0;
 }
 
 .hero-title .highlight {
+    display: inline-block;
     background: var(--gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline-block;
 }
 
 .hero-subtitle {
-    color: #aaa; 
-    margin-top: 40px; 
-    letter-spacing: 0.15em;
-    font-size: clamp(1.2rem, 2.5vw, 1.8rem); 
-    font-weight: bold;
+    display: block;
+    margin: 34px 0 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--soft);
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-weight: 800;
+    line-height: 1.8;
+    letter-spacing: 0.08em;
 }
 
-.vision-container { 
-    display: flex; 
-    flex-direction: column; 
+.vision-container {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 56px;
+    align-items: start;
+}
+
+.vision-container .section-title {
+    grid-column: 1 / -1;
 }
 
 .vision-catch {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 800;
-    line-height: 1.5;
-    margin-bottom: 40px;
-    letter-spacing: 0.05em;
+    position: sticky;
+    top: 124px;
+    margin: 0;
+    padding-left: 28px;
     border-left: 4px solid;
     border-image: var(--gradient) 1;
-    padding-left: 30px;
+    font-size: clamp(1.7rem, 3vw, 2.65rem);
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
 }
 
 .vision-text {
-    font-size: 1.1rem;
-    color: #ccc;
-    line-height: 2.2;
-    max-width: 800px;
+    max-width: none;
+    margin: 0;
+    color: var(--soft);
+    font-size: 1rem;
+    line-height: 2.25;
     letter-spacing: 0.05em;
 }
 
 .production-card {
-    background: var(--card-bg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 30px 40px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
+    gap: 56px;
+    padding: clamp(28px, 5vw, 56px);
+    overflow: hidden;
+    border: 1px solid var(--line);
     border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    overflow: hidden; 
-    position: relative; 
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0.09), transparent 44%),
+        var(--card);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.36);
+    backdrop-filter: blur(20px);
 }
 
-.production-info { 
-    flex: 1; 
-    min-width: 300px; 
-    z-index: 2; 
+.production-card::before {
+    content: "01";
+    position: absolute;
+    top: 28px;
+    right: 32px;
+    color: rgba(247,242,234,0.18);
+    font-size: clamp(3rem, 9vw, 7rem);
+    font-weight: 900;
+    line-height: 1;
 }
 
-.production-name { 
-    font-size: clamp(1.2rem, 3.5vw, 1.5rem); 
-    font-weight: 800; 
-    margin-bottom: 20px; 
-    letter-spacing: 0.02em; 
-    line-height: 1.3;
-    white-space: nowrap; 
+.production-info {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-width: 300px;
+}
+
+.production-name {
+    margin-bottom: 22px;
+    color: var(--text);
+    font-size: clamp(1.45rem, 3.4vw, 2rem);
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: 0;
 }
 
 .production-name span {
     display: block;
-    font-size: 0.9rem;
+    margin-top: 6px;
     color: var(--accent);
-    margin-top: 5px;
-    font-weight: bold;
-    white-space: normal; 
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
 }
 
-.production-desc { 
-    color: #aaa; 
-    margin-bottom: 0; 
-    font-size: 0.95rem; 
-    line-height: 2.0; 
+.production-desc {
+    margin: 0;
+    color: var(--soft);
+    font-size: 0.95rem;
+    line-height: 2;
 }
 
 .production-image-container {
-    flex: 1; 
-    min-width: 200px; 
-    height: 200px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    position: relative; 
+    position: relative;
     z-index: 1;
+    flex: 0 0 min(320px, 34%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .production-logo-img {
-    max-width: 220px; 
-    height: auto;
-    position: relative;
-    z-index: 2;
-    filter: none;
-    box-shadow: none;
+    width: min(320px, 100%);
+    max-width: 320px;
 }
 
-.company-table { 
-    width: 100%; 
-    border-collapse: collapse; 
+.company-table {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-collapse: collapse;
+    background: rgba(18,20,24,0.52);
+    backdrop-filter: blur(18px);
 }
 
-.company-table th, 
-.company-table td { 
-    padding: 25px 0; 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+.company-table th,
+.company-table td {
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--line);
     text-align: left;
 }
 
-.company-table th { 
-    width: 30%; 
-    color: #888; 
-    font-weight: normal; 
+.company-table th {
+    width: 30%;
+    color: var(--muted);
+    background: rgba(255,255,255,0.025);
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
-footer { 
-    padding: 60px 0; 
-    text-align: center; 
-    font-size: 0.8rem; 
-    color: #555; 
-    letter-spacing: 0.1em; 
+.company-table td {
+    color: var(--soft);
+}
+
+footer {
+    padding: 60px 0;
+    border-top: 1px solid var(--line);
+    background: rgba(0,0,0,0.18);
+    color: #555;
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
 }
 
 @media (max-width: 768px) {
-    header { padding: 15px 0; }
-
-    nav { display: none; }
-
-    .hero { height: 70vh; }
-
-    .section { padding: 60px 0; }
-
-    .section-title { margin-bottom: 40px; }
-
-    .hero-subtitle { 
-        font-size: clamp(0.9rem, 3.5vw, 1.2rem); 
-        letter-spacing: 0.05em; 
+    .container {
+        width: calc(100% - 44px);
     }
 
-    .vision-catch { 
-        font-size: clamp(1.2rem, 5vw, 1.5rem); 
-        padding-left: 15px; 
-        letter-spacing: 0.02em; 
+    header {
+        padding: 14px 0;
     }
 
-    .production-card { 
-        padding: 25px 20px; 
-        gap: 10px; 
-        flex-direction: column; 
+    nav {
+        display: none;
     }
 
-    .production-image-container { 
-        order: -1; 
-        height: 120px; 
-        min-width: 100%; 
+    .header-logo-img {
+        width: 68px;
+        height: 44px;
     }
 
-    .production-logo-img { 
-        max-width: 140px;
-        filter: none;
-        box-shadow: none;
-    } 
-    
-    .company-table th, 
-    .company-table td { 
-        display: block; 
-        width: 100%; 
-        padding: 10px 0;
+    .hero {
+        min-height: 620px;
+        height: 86vh;
     }
 
-    .company-table th { 
-        border: none; 
-        padding-bottom: 0; 
+    .hero-title {
+        font-size: clamp(3.6rem, 18vw, 5.2rem);
     }
 
-    .production-name { white-space: normal; } 
+    .hero-subtitle {
+        font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+        letter-spacing: 0.05em;
+    }
 
-    .pc-br { display: none; }
+    .section {
+        padding: 64px 0;
+    }
+
+    .section-title {
+        margin-bottom: 40px;
+    }
+
+    .vision-container {
+        display: block;
+    }
+
+    .vision-catch {
+        position: static;
+        margin-bottom: 28px;
+        padding-left: 15px;
+        font-size: clamp(1.2rem, 5vw, 1.5rem);
+        letter-spacing: 0.02em;
+    }
+
+    .pc-br {
+        display: none;
+    }
+
+    .production-card {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 24px;
+    }
+
+    .production-card::before {
+        top: 18px;
+        right: 18px;
+    }
+
+    .production-info {
+        min-width: 0;
+    }
+
+    .production-image-container {
+        flex: none;
+        min-height: 220px;
+    }
+
+    .production-logo-img {
+        width: min(240px, 88%);
+        max-width: 240px;
+    }
+
+    .company-table,
+    .company-table tbody,
+    .company-table tr,
+    .company-table th,
+    .company-table td {
+        display: block;
+    }
+
+    .company-table {
+        border-radius: 8px;
+    }
+
+    .company-table th,
+    .company-table td {
+        width: auto;
+        padding: 10px 18px;
+    }
+
+    .company-table th {
+        padding-top: 20px;
+        border-bottom: 0;
+    }
+
+    .company-table td {
+        padding-bottom: 20px;
+    }
 }
 </style>
 </head>
@@ -343,7 +485,7 @@ footer {
             <span class="highlight">Internet.</span>
         </h1>
         <p class="hero-subtitle">
-            インターネットの熱狂を、<span class="nowrap">次の次元へ。</span>
+            インターネットの熱狂を、次の次元へ。
         </p>
     </div>
 </section>
@@ -351,12 +493,13 @@ footer {
 <section id="vision" class="section">
     <div class="container vision-container">
         <h2 class="section-title">Vision<span>企業理念</span></h2>
-        
+
         <h3 class="vision-catch">
             個人の「好き」を、<br>
-            世界を動かす<span class="nowrap">ムーブメントへ。</span>
+            世界を動かす<br>
+            ムーブメントへ。
         </h3>
-        
+
         <p class="vision-text">
             誰もが発信者になれる時代。<br>
             しかし、その才能を正しく社会に届け、継続的な価値を生み出すためには、確かな戦略とサポートが必要です。<br><br class="pc-br">
@@ -371,7 +514,7 @@ footer {
 <section id="business" class="section">
     <div class="container">
         <h2 class="section-title">Business<span>事業内容</span></h2>
-        
+
         <div class="production-card">
             <div class="production-info">
                 <div class="production-name">
@@ -381,7 +524,7 @@ footer {
 
                 <p class="production-desc">
                     配信者とのエージェンシー契約に基づき、<br class="pc-br">
-                    企業案件の獲得支援、条件設計、契約管理、<br class="pc-br">
+                    企業案件の獲得支援、案件設計、契約管理、<br class="pc-br">
                     進行ディレクションまでを一貫して担当しています。<br>
                     <br class="pc-br">
                     短期的な案件成立ではなく、<br class="pc-br">
@@ -389,7 +532,7 @@ footer {
                     継続的な事業基盤の構築を支援しています。
                 </p>
             </div>
-            
+
             <div class="production-image-container">
                 <img src="./nocta-icon._white.png" alt="Nocta Icon" class="production-logo-img">
             </div>
@@ -408,7 +551,7 @@ footer {
             </tr>
             <tr>
                 <th>Location</th>
-                <td>〒150-0043<br>東京都渋谷区道玄坂1丁目10番8号渋谷道玄坂東急ビル2F−C</td>
+                <td>〒150-0043<br>東京都渋谷区道玄坂1丁目10番8号渋谷道玄坂東急ビル2F-C</td>
             </tr>
             <tr>
                 <th>Contact</th>
@@ -420,7 +563,7 @@ footer {
 
 <footer>
     <div class="container">
-        <p>&copy; 2026 GlowEngine GK. All Rights Reserved.</p>
+        <p>&copy; 2026 GlowEngine LLC. All Rights Reserved.</p>
     </div>
 </footer>
 
