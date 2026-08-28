@@ -51,7 +51,7 @@ img {
 }
 
 .container {
-    width: min(1440px, calc(100% - 96px));
+    width: min(1580px, calc(100% - 96px));
     margin: 0 auto;
 }
 
@@ -205,7 +205,7 @@ nav a:hover {
 
 .hero-content {
     position: relative;
-    max-width: min(1180px, 92vw);
+    max-width: min(1300px, 92vw);
     z-index: 2;
 }
 
@@ -236,11 +236,11 @@ nav a:hover {
 
 .hero-title {
     position: relative;
-    max-width: min(1120px, 92vw);
+    max-width: min(1240px, 92vw);
     margin: 0;
     padding-bottom: 26px;
     border-bottom: 8px solid rgba(247, 242, 234, 0.88);
-    font-size: clamp(4.6rem, 10.2vw, 9.4rem);
+    font-size: clamp(5rem, 11.2vw, 10.35rem);
     font-weight: 900;
     line-height: 0.96;
     letter-spacing: 0;
@@ -280,7 +280,7 @@ nav a:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 10px 22px;
-    width: min(100%, 760px);
+    width: min(100%, 840px);
     margin-top: 38px;
     padding-top: 18px;
     border-top: 1px solid rgba(247, 242, 234, 0.14);
