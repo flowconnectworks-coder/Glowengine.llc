@@ -8,6 +8,7 @@
     --accent-2: #f3b35c;
     --gradient: linear-gradient(135deg, #50e6d2 0%, #8bb8ff 50%, #f3b35c 100%);
     --card: rgba(18, 20, 24, 0.74);
+    --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 html {
