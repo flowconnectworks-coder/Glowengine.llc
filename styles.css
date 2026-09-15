@@ -500,15 +500,22 @@ footer {
     }
 
     .hero-topline {
-        display: block;
+        display: flex;
+        gap: 0.5em;
+        flex-wrap: nowrap;
         margin-bottom: 30px;
         font-size: 0.62rem;
         line-height: 1.8;
-        letter-spacing: 0.12em;
+        letter-spacing: 0;
     }
 
     .hero-topline span {
         display: block;
+        white-space: nowrap;
+    }
+
+    .hero-topline span:nth-child(2) {
+        display: none;
     }
 
     .hero-topline span:last-child {
@@ -516,8 +523,7 @@ footer {
     }
 
     .hero-meta-line {
-        font-size: 0.66rem;
-        letter-spacing: 0.1em;
+        display: none;
     }
 
     .section {
@@ -591,4 +597,5 @@ footer {
         padding-bottom: 20px;
     }
 }
+
 
